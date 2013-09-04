@@ -4,6 +4,8 @@ This function allows you to include other classes (or an object with functions) 
 
 This allows for better code reuse in classes where inheritance isn't feasible (already extending from one type of Backbone view, etc).
 
+[View Demo](http://jsfiddle.net/zN9kN/1/)
+
 ## Examples
 
 ### Declaring a Mixin
