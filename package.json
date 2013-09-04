@@ -1,6 +1,6 @@
 {
   "name": "coffeescript-mixins",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Caleb Mingle <me@caleb.io>",
   "description": "easy to use mixins with CoffeeScript",
   "main": "lib/mixins.js",
