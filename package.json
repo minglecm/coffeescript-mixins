@@ -1,0 +1,30 @@
+{
+  "name": "coffeescript-mixins",
+  "version": "0.0.1",
+  "author": "Caleb Mingle <me@caleb.io>",
+  "description": "easy to use mixins with CoffeeScript",
+  "main": "lib/mixins.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dentafrice/coffeescript-mixins.git"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "keywords": [
+    "coffeescript",
+    "mixins"
+  ],
+  "dependencies": {
+    "underscore": "~1.5.1"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.3",
+    "jasmine-node": "~1.11.0"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "bundledDependencies": [],
+  "license": "MIT"
+}
