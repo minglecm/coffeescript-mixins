@@ -10,8 +10,14 @@ This allows for better code reuse in classes where you're already using inherita
 
 You'll need to require and bootstrap the mixins before any of your CoffeeScript class definitions.
 
+### Node
+
 	mixins = require 'coffeescript-mixins'
 	mixins.bootstrap() # Mixes in include on Function
+	
+### Web
+
+	window.CoffeeScriptMixins.bootstrap();
 	
 After this initial setup you can utilize the `@include` method in any of your CoffeeScript classes.
 
