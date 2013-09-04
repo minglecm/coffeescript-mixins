@@ -1,4 +1,3 @@
-_ = require 'underscore'
 mixins = require '../lib/mixins'
 
 describe "module exports", ->

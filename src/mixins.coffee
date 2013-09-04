@@ -1,16 +1,17 @@
-_ = require 'underscore'
-
 ###*
  * Include a class or object with functions into another class.
  * @param  {Object} mixin               [description]
  * @param  {Boolean} wrapOldFunction  [description]
 ###
 
-module.exports =
+exports = 
   bootstrap: ->
     Function::include = (mixin) ->
       if not mixin
         return throw 'Supplied mixin was not found'
+
+      if not _
+        return throw 'Underscore was not found'
 
       mixin = mixin.prototype if _.isFunction(mixin)
 
@@ -30,3 +31,13 @@ module.exports =
 
       mixin.included?.apply(this)
       this
+
+if module?.exports?
+  if require?
+    _ = require 'underscore'
+
+  module.exports = exports
+else
+  _ = window._
+  
+  window.CoffeeScriptMixins = exports

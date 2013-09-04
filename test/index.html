@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Testing Mixins</title>
+  </head>
+
+  <body>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+    <script src="../lib/mixins.js"></script>
+    <script>
+      $(function() {
+        window.CoffeeScriptMixins.bootstrap(); // Mix into Function.
+
+        var Mixin = function() {};
+
+        Mixin.prototype.sharedFunction = function() {
+          $('body').append($('<div>').text((new Date()).toString()));
+        };
+
+        var A = function() {};
+        var B = function() {};
+        var C = function() {};
+        var D = function() {};
+        var E = function() {};
+
+        C.prototype.sharedFunction = function() {
+          $('body').append($('<div>').text('Hey!'));
+          C.__super__.sharedFunction(); // super
+        };
+
+        D.prototype.sharedFunction = function() {
+          $('body').append($('<div>').text('Should not appear!'));
+        };
+
+        E.prototype.sharedFunction = function() {
+          $('body').append($('<div>').text('Should appear!'));
+          C.__super__.sharedFunction(); // super
+        };
+
+        A.include(Mixin);
+        B.include(Mixin);
+        C.include(Mixin);
+        E.include(Mixin);
+
+        var a = new A();
+        a.sharedFunction();
+
+        var b = new B();
+        b.sharedFunction();
+
+        var c = new C();
+        c.sharedFunction();
+
+        var e = new E();
+        e.sharedFunction();
+      });
+    </script>
+  </body>
+</html>
