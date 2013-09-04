@@ -6,19 +6,19 @@
 
 You can create a mixin like any other CoffeeScript class.  Give it some methods, utilize inheritance, or include another mixin.
 
-  # Typical mixin
+    # Typical mixin
     class Mixin
       sharedMethod: ->
         return 'Hey!'
-        
+          
     # With inheritance
-  class CoolMixin extends Mixin
-    coolMethod: ->
-      return 'Heya!'
-      
-  # With other mixins
-  class MultiMixin
-    @include CoolMixin
+    class CoolMixin extends Mixin
+      coolMethod: ->
+        return 'Heya!'
+        
+    # With other mixins
+    class MultiMixin
+      @include CoolMixin
 
 ### Including a mixin
 
@@ -34,78 +34,78 @@ You can include a mixin into a CoffeeScript class using the `include` class meth
 
 You can override mixed in functions and declare your own behavior:
 
-  class Mixin
-    sharedMethod: ->
-      console.log 'Cool…'
+    class Mixin
+      sharedMethod: ->
+        console.log 'Cool…'
+        
+    class A
+      @include Mixin
       
-  class A
-    @include Mixin
-    
-    sharedMethod: ->
-      # please don't console.log in my code.
+      sharedMethod: ->
+        # please don't console.log in my code.
 
 You can also use `super` to call up to the mixed in function.
 
-  class Mixin
-    sharedMethod: ->
-      console.log 'Cool...'
-  
-  class A
-    @include Mixin
-  
-    sharedMethod: ->
-      console.log 'Really...'
-      super
-  
-  ###
-  Outputs:
-    Really…
-    Cool…
-  ###
-  a = new A()
-  a.sharedMethod() 
-  
+	class Mixin
+      sharedMethod: ->
+        console.log 'Cool...'
+
+    class A
+      @include Mixin
+
+      sharedMethod: ->
+        console.log 'Really...'
+        super
+      
+    ###
+    Outputs:
+      Really…
+      Cool…
+    ###
+    a = new A()
+    a.sharedMethod() 
+
 ### Notes
 
 A mixed in function will take precedence over an inherited function, like so:
 
-  class Mixin
-    sharedMethod: ->
-      console.log 'Cool...'
-  
-  class A
-    sharedMethod: ->
-      console.log 'Hey...'
-  
-  class B extends A
-    @include Mixin
-  
-  ###
-  Outputs:
+    class Mixin
+      sharedMethod: ->
+        console.log 'Cool...'
+
+    class A
+      sharedMethod: ->
+        console.log 'Hey...'
+
+    class B extends A
+      @include Mixin
+
+    ###
+    Outputs:
       Cool...
-  ###
-  b = new B()
-  b.sharedMethod()
+    ###
+    b = new B()
+    b.sharedMethod()
   
 Calling `super` in an override will not call up to the inherited class but will instead call up to the mixed in class:
 
-  class Mixin
-    sharedMethod: ->
-      console.log 'Cool...'
-  
-  class A
-    sharedMethod: ->
-      console.log 'Hey...'
-  
-  class B extends A
-    @include Mixin
-  
-    sharedMethod: ->
-      super
-  
-  ###
-  Outputs:
+    class Mixin
+      sharedMethod: ->
+        console.log 'Cool...'
+
+    class A
+      sharedMethod: ->
+        console.log 'Hey...'
+
+    class B extends A
+      @include Mixin
+
+      sharedMethod: ->
+        super
+
+    ###
+    Outputs:
       Cool...
-  ###
-  b = new B()
-  b.sharedMethod()
+    ###
+    b = new B()
+    b.sharedMethod()
