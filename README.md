@@ -10,7 +10,7 @@ This allows for better code reuse in classes where inheritance isn't feasible (a
 
 You'll need to require and bootstrap the mixins before any of your CoffeeScript class definitions.
 
-	mixins = require 'mixins'
+	mixins = require 'coffeescript-mixins'
 	mixins.bootstrap() # Mixes in include on Function
 	
 After this initial setup you can utilize the `@include` method in any of your CoffeeScript classes.
