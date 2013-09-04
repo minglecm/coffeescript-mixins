@@ -1,5 +1,9 @@
 # CoffeeScript Mixins
 
+This function allows you to include other classes (or an object with functions) into a CoffeeScript class.
+
+This allows for better code reuse in classes where inheritance isn't feasible (already extending from one type of Backbone view, etc).
+
 ## Examples
 
 ### Declaring a Mixin
