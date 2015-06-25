@@ -4,14 +4,14 @@
  * @param  {Boolean} wrapOldFunction  [description]
 ###
 
-exports = 
+exports =
   bootstrap: ->
     Function::include = (mixin) ->
       if not mixin
-        return throw 'Supplied mixin was not found'
+        throw 'Supplied mixin was not found'
 
       if not _
-        return throw 'Underscore was not found'
+        throw 'Underscore was not found'
 
       mixin = mixin.prototype if _.isFunction(mixin)
 
@@ -21,7 +21,7 @@ exports =
         tmpSuper.constructor = @.__super__.constructor
 
       @.__super__ = tmpSuper || {}
-      
+
       # Copy function over to prototype and the new intermediate superclass.
       for methodName, funct of mixin when methodName not in ['included']
         @.__super__[methodName] = funct
@@ -39,5 +39,5 @@ if module?.exports?
   module.exports = exports
 else
   _ = window._
-  
+
   window.CoffeeScriptMixins = exports
